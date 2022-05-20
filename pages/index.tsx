@@ -60,7 +60,14 @@ const Index: NextPage = () => {
         h="30vh"
         mt="6"
       >
-        <Box
+        <MotionBox
+          animate={{
+            x: ["100%", "0%"],
+            opacity: ["0%", "100%"],
+            transition: {
+              delay: 0.5,
+            },
+          }}
           position="absolute"
           boxSize={{ base: "24", sm: "32" }}
           zIndex="9"
@@ -76,8 +83,15 @@ const Index: NextPage = () => {
             objectFit="cover"
             alt="patient"
           />
-        </Box>
-        <Box
+        </MotionBox>
+        <MotionBox
+          animate={{
+            scale: [0, 1],
+            transition: {
+              duration: 0.6,
+              type: "spring",
+            },
+          }}
           border="5px solid black"
           borderColor="brand.100"
           position="absolute"
@@ -98,8 +112,15 @@ const Index: NextPage = () => {
             objectFit="cover"
             alt="patient"
           />
-        </Box>
-        <Box
+        </MotionBox>
+        <MotionBox
+          animate={{
+            x: ["-100%", "0%"],
+            opacity: ["0%", "100%"],
+            transition: {
+              delay: 0.5,
+            },
+          }}
           position="absolute"
           boxSize={{ base: "24", sm: "32" }}
           zIndex="9"
@@ -115,7 +136,7 @@ const Index: NextPage = () => {
             objectFit="cover"
             alt="patient"
           />
-        </Box>
+        </MotionBox>
       </HStack>
       <Box
         p={{ base: "2", md: "8", xl: "12" }}
