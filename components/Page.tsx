@@ -1,21 +1,21 @@
 import Head from "next/head";
 import React from "react";
+import Layout from "./Layout";
 import WithDefaultGlobalStyles from "./WithDefaultGlobalStyles";
 
 type PageProps = {
-  title: string;
   description: string;
   children: React.ReactNode;
 };
-const Page: React.FC<PageProps> = ({ title, description, children }) => {
+const Page: React.FC<PageProps> = ({ description, children }) => {
   return (
     <WithDefaultGlobalStyles>
       <Head>
-        <title>{title}</title>
+        <title>COE - Voting Site</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {children}
+      <Layout>{children}</Layout>
     </WithDefaultGlobalStyles>
   );
 };
