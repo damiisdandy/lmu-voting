@@ -3,7 +3,7 @@ import Page from "../components/Page";
 
 const FourZeroFour = () => {
   return (
-    <Page description="">
+    <Page description="Home page">
       <Center minH="80vh">
         <Heading fontSize={{ base: "100px", md: "200px", lg: "300px" }}>
           404

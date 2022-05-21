@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import Navbar from "./Navbar";
 import { Box, BoxProps, Center, Text, VStack } from "@chakra-ui/react";
 import { useGlobalContext } from "../../context";
@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import logo from "../../assets/images/logo-full.png";
 import Link from "next/link";
 import Image from "next/image";
+import Button from "../Button";
 
 const MotionBox = motion<MotionProps & BoxProps>(Box);
 
@@ -33,6 +34,12 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       type: "TOGGLE_SIDEBAR",
     });
   };
+
+  useEffect(() => {
+    dispatch({
+      type: "CLOSE_SIDEBAR",
+    });
+  }, [pathname, dispatch]);
   return (
     <>
       <Navbar links={LINKS} toggleSidebar={toggleSidebar} />
@@ -47,6 +54,16 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         top="0"
         zIndex="40"
       >
+        <Button
+          onClick={() => push("/login")}
+          size="sm"
+          isLight
+          w="calc(100% - 20px)"
+          position="absolute"
+          bottom="10px"
+        >
+          Login
+        </Button>
         <Box h="8" w="28" position="absolute" top="4" left="4">
           <Image
             src={logo}

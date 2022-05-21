@@ -4,7 +4,7 @@ interface GlobalState {
 }
 
 interface Action {
-  type: "TOGGLE_SIDEBAR" | "SET_IS_AUTH";
+  type: "TOGGLE_SIDEBAR" | "SET_IS_AUTH" | "CLOSE_SIDEBAR";
   payload?: any;
 }
 
