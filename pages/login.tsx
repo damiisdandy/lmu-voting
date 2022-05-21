@@ -6,6 +6,7 @@ import {
   Input,
   BoxProps,
   chakra,
+  useToast,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/router";
@@ -71,6 +72,7 @@ const Login = () => {
   const [hasPasscode, setHasPasscode] = useState<boolean>(false);
   const { handleSubmit, register } = useForm();
   const { push } = useRouter();
+  const toast = useToast();
 
   const login = async (data: any) => {
     console.log(data);
