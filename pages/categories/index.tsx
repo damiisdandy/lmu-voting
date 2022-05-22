@@ -86,16 +86,6 @@ const Categories = () => {
     QUERY
   );
   const { push } = useRouter();
-  const { dispatch } = useGlobalContext();
-
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: "SET_CATEGORIES",
-        payload: data?.sessionBySlug.categories,
-      });
-    }
-  }, [data, dispatch]);
 
   return (
     <Page description="Categories">
