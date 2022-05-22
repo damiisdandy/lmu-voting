@@ -1,6 +1,7 @@
 interface GlobalState {
   isSidebarOpen: boolean;
   isAuthenticated: boolean;
+  regno: string | null;
 }
 
 interface Action {

@@ -10,6 +10,7 @@ import reducer from "./reducer";
 export const initialState: GlobalState = {
   isAuthenticated: false,
   isSidebarOpen: false,
+  regno: null,
 };
 
 const globalContext = createContext<{
