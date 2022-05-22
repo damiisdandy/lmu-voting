@@ -2,10 +2,17 @@ interface GlobalState {
   isSidebarOpen: boolean;
   isAuthenticated: boolean;
   loader: boolean;
+  startDate: string | null;
+  endDate: string | null;
 }
 
 interface Action {
-  type: "TOGGLE_SIDEBAR" | "SET_IS_AUTH" | "CLOSE_SIDEBAR" | "SET_LOADER";
+  type:
+    | "TOGGLE_SIDEBAR"
+    | "SET_IS_AUTH"
+    | "CLOSE_SIDEBAR"
+    | "SET_LOADER"
+    | "SET_TIMER";
   payload?: any;
 }
 
@@ -24,6 +31,8 @@ interface VoteCategory {
   session: VoteSession;
   nominees: VoteNominee[];
   isVoted: boolean;
+  votedFor: VoteNominee;
+  createdAt: string;
 }
 
 interface VoteNominee {
@@ -31,6 +40,7 @@ interface VoteNominee {
   name: string;
   regno: number;
   level: number;
+  department: string;
   picture: string;
   blurPicture: string;
   isVoted: boolean;

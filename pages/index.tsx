@@ -21,6 +21,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { MotionProps, motion } from "framer-motion";
 import { useGlobalContext } from "../context";
+import Countdown from "react-countdown";
+import dayjs from "dayjs";
 
 const MotionBox = motion<MotionProps & BoxProps>(Box);
 const MotionHeading = motion<MotionProps & HeadingProps>(Heading);
@@ -231,8 +233,37 @@ const Index: NextPage = () => {
               isExternal
             >
               damiisdandy
+            </ChakraLink>{" "}
+            &{" "}
+            <ChakraLink
+              className="write"
+              href="https://www.aolamide.com"
+              isExternal
+            >
+              olamide
             </ChakraLink>
           </MotionText>
+          {state.endDate && (
+            <Box mt="2">
+              <Countdown
+                renderer={({ hours, minutes, seconds, days }) => {
+                  return (
+                    <Heading
+                      textAlign={{ base: "center", md: "left" }}
+                      fontSize={{ base: "18px", md: "22px", xl: "30px" }}
+                      color="brand.100"
+                    >
+                      {days} day{days != 1 ? "s" : ""}, {hours} hour
+                      {hours != 1 ? "s" : ""}, {minutes} minute
+                      {minutes != 1 ? "s" : ""}, {seconds} second
+                      {seconds != 1 ? "s" : ""} left
+                    </Heading>
+                  );
+                }}
+                date={state.endDate}
+              />
+            </Box>
+          )}
         </MotionBox>
       </Box>
       <MotionBox

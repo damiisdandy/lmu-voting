@@ -14,6 +14,12 @@ const reducer: ReducerType = (state, action) => {
         ...state,
         loader: action.payload,
       };
+    case "SET_TIMER":
+      return {
+        ...state,
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      };
     default:
       return { ...state };
   }

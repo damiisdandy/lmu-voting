@@ -3,18 +3,22 @@ import {
   Avatar,
   AvatarGroup,
   Box,
+  Center,
   Grid,
   GridItem,
   GridItemProps,
   GridProps,
   Heading,
   HStack,
+  Spinner,
 } from "@chakra-ui/react";
 import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Button from "../../components/Button";
 import Page from "../../components/Page";
 import config from "../../config";
+import { useGlobalContext } from "../../context";
 
 const MotionGrid = motion<MotionProps & GridProps>(Grid);
 const MotionGridItem = motion<MotionProps & GridItemProps>(GridItem);
@@ -27,6 +31,10 @@ const QUERY = gql`
         id
         name
         slug
+        isVoted
+        votedFor {
+          name
+        }
         nominees {
           id
           name
@@ -41,7 +49,7 @@ const ACTIVE_STYLE = {
   bgColor: "brand.100",
   color: "white",
   ".chakra-avatar__excess": {
-    color: "white",
+    color: "white !important",
     borderColor: "brand.200",
   },
   ".avatar": {
@@ -57,7 +65,7 @@ const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -74,10 +82,21 @@ const variantItem = {
 };
 
 const Categories = () => {
-  const { data, error, loading } = useQuery<{ sessionBySlug: VoteSession }>(
+  const { data, loading, error } = useQuery<{ sessionBySlug: VoteSession }>(
     QUERY
   );
   const { push } = useRouter();
+  const { dispatch } = useGlobalContext();
+
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: "SET_CATEGORIES",
+        payload: data?.sessionBySlug.categories,
+      });
+    }
+  }, [data, dispatch]);
+
   return (
     <Page description="Categories">
       <Box p={{ base: "4", md: "6" }}>
@@ -89,9 +108,15 @@ const Categories = () => {
           CATEGORIES
         </Heading>
         {loading ? (
-          "loading..."
+          <Center h="60vh">
+            <Spinner boxSize="28" color="brand.100" />
+          </Center>
         ) : error ? (
-          "error!"
+          <Center h="60vh">
+            <Heading textAlign="center" color="red.500">
+              Problem fetching categories 🙁
+            </Heading>
+          </Center>
         ) : (
           <MotionGrid
             variants={container}
@@ -121,7 +146,10 @@ const Categories = () => {
                   sx={category.isVoted ? ACTIVE_STYLE : {}}
                   _hover={ACTIVE_STYLE}
                 >
-                  <Heading mb="4" fontSize={{ base: "25px", md: "35px" }}>
+                  <Heading
+                    mb="4"
+                    fontSize={{ base: "25px", md: "27px", lg: "35px" }}
+                  >
                     {category.name}
                   </Heading>
                   <HStack justify="space-between">

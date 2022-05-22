@@ -48,8 +48,14 @@ const LoginForm = ({ withPasscode, register, loading }: LoginFormProps) => {
           : " Type in your registration number"}
       </Text>
       {withPasscode && (
-        <Text textAlign="center" mb="2" fontSize="11px" color="#555">
-          If you didn&apos;t recieve any mail, please check your <b>spam</b>
+        <Text
+          textAlign="center"
+          mb="2"
+          fontSize="14px"
+          fontWeight="bold"
+          color="#555"
+        >
+          If you didn&apos;t recieve an email, please check your <b>spam</b>
         </Text>
       )}
       <VStack w={{ base: "90%", md: "80%" }} m="0 auto" gap="3">
@@ -69,6 +75,7 @@ const LoginForm = ({ withPasscode, register, loading }: LoginFormProps) => {
           required
           w="100%"
           variant="filled"
+          type="text"
           placeholder={withPasscode ? "passcode goes here..." : "e.g 1700119"}
         />
         <Button isLoading={loading} type="submit" w="100%">
@@ -117,6 +124,9 @@ const LoginRedirect = () => {
   );
 };
 
+const delay = (sec: number) =>
+  new Promise((resolve) => setTimeout(resolve, sec * 1000));
+
 const Login = () => {
   const [hasPasscode, setHasPasscode] = useState<boolean>(false);
   const { handleSubmit, register } = useForm();
@@ -129,20 +139,28 @@ const Login = () => {
     try {
       setLoading(true);
       if (hasPasscode) {
-        const resData = await axios.post("/auth/login", {
+        await axios.post("/auth/login", {
           regno: data.regno.trim(),
           passcode: data?.passcode?.trim(),
         });
-        console.log(resData.data);
         toast({
           status: "success",
           title: "Logged in successfully",
         });
         dispatch({
+          type: "SET_LOADER",
+          payload: true,
+        });
+        await delay(1.5);
+        push("/");
+        dispatch({
+          type: "SET_LOADER",
+          payload: false,
+        });
+        dispatch({
           type: "SET_IS_AUTH",
           payload: true,
         });
-        push("/");
       } else {
         const resData = await axios.post("/user/register", {
           regno: data.regno.trim(),

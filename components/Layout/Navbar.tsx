@@ -64,16 +64,22 @@ const Navbar = ({
       position="relative"
       justifyContent="space-between"
       w="100%"
-      zIndex="12"
+      zIndex="35"
       px={{ base: "4", md: "8" }}
       py={{ base: "2", md: "4" }}
     >
       <Box
         position="relative"
+        zIndex="2"
         h="auto"
         w={{ base: "20", md: "24" }}
         cursor="pointer"
         onClick={() => push("/")}
+        sx={{
+          img: {
+            zIndex: 3,
+          },
+        }}
       >
         <Image src={logo} placeholder="blur" objectFit="cover" alt="COE logo" />
       </Box>

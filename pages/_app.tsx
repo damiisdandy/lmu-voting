@@ -3,12 +3,22 @@ import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
 import { chakraTheme } from "../chakra-theme";
 import { GlobalContextProvider } from "../context";
 import config from "../config";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
 import "../styles.css";
 
-const client = new ApolloClient({
+const link = createHttpLink({
   uri: config.apiUrl + "/graphql",
+  credentials: "include",
+});
+
+const client = new ApolloClient({
   cache: new InMemoryCache(),
+  link,
 });
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {

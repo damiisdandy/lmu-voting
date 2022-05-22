@@ -11,6 +11,8 @@ export const initialState: GlobalState = {
   isAuthenticated: false,
   isSidebarOpen: false,
   loader: true,
+  startDate: null,
+  endDate: null,
 };
 
 const globalContext = createContext<{
