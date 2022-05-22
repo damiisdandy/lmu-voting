@@ -9,10 +9,19 @@ interface ButtonProps extends ChakraButtonProps {
   children: ReactNode;
 }
 
-const Button = ({ children, isLight, ...rest }: ButtonProps) => {
-  const bgColor = isLight ? "brand.200" : "brand.100";
+const Button = ({
+  children,
+  isLight,
+  bgColor,
+  color,
+  ...rest
+}: ButtonProps) => {
+  const bgColorSet = bgColor ? bgColor : isLight ? "brand.200" : "brand.100";
   return (
     <ChakraButton
+      px="8"
+      color={color ? color : isLight ? "black" : "white"}
+      bgColor={bgColorSet}
       {...rest}
       variant="solid"
       fontWeight="bold"
@@ -26,10 +35,8 @@ const Button = ({ children, isLight, ...rest }: ButtonProps) => {
         transform: "scale(0.9)",
       }}
       sx={{
-        px: "8",
         "&, &:hover, &:active": {
-          color: isLight ? "black" : "white",
-          bgColor,
+          bgColor: bgColorSet,
         },
       }}
     >

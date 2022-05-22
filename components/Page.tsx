@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import { useGlobalContext } from "../context";
 import Layout from "./Layout";
 import WithDefaultGlobalStyles from "./WithDefaultGlobalStyles";
 

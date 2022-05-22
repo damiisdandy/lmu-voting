@@ -7,8 +7,12 @@ const reducer: ReducerType = (state, action) => {
     case "SET_IS_AUTH":
       return {
         ...state,
-        isAuthenticated: action.payload.status,
-        regno: action.payload.regno,
+        isAuthenticated: action.payload,
+      };
+    case "SET_LOADER":
+      return {
+        ...state,
+        loader: action.payload,
       };
     default:
       return { ...state };

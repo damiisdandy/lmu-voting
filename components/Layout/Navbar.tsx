@@ -1,4 +1,11 @@
-import { Box, HStack, IconButton, StackProps, Text } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  IconButton,
+  StackProps,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +14,8 @@ import logo from "../../assets/images/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useGlobalContext } from "../../context";
 import { motion, MotionProps } from "framer-motion";
+import { useState } from "react";
+import axios from "../../services";
 
 const MotionHStack = motion<MotionProps & StackProps>(HStack);
 
@@ -17,8 +26,32 @@ const Navbar = ({
   links: { name: string; url: string }[];
   toggleSidebar: () => void;
 }) => {
-  const { state } = useGlobalContext();
+  const { state, dispatch } = useGlobalContext();
   const { pathname, push } = useRouter();
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const logout = async () => {
+    try {
+      setLoading(true);
+      await axios.get("/auth/logout");
+      toast({
+        status: "warning",
+        title: "Successfully logged out",
+      });
+      dispatch({
+        type: "SET_IS_AUTH",
+        payload: false,
+      });
+      push("/");
+    } catch {
+      toast({
+        status: "error",
+        title: "Failed to log out",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <MotionHStack
       initial={{ y: "-100%" }}
@@ -85,11 +118,16 @@ const Navbar = ({
           ))}
         </HStack>
         <Button
-          onClick={() => push("/login")}
+          isLoading={loading}
+          onClick={state.isAuthenticated ? logout : () => push("/login")}
           display={{ base: "none", md: "flex" }}
           isLight={pathname === "/"}
+          // @ts-ignore
+          bgColor={state.isAuthenticated ? "brand.300" : null}
+          // @ts-ignore
+          color={state.isAuthenticated ? "white" : null}
         >
-          Login
+          {state.isAuthenticated ? "Logout" : "Login"}
         </Button>
       </HStack>
       <IconButton

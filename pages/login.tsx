@@ -102,7 +102,7 @@ const LoginRedirect = () => {
           You are already logged in
         </Heading>
         <Text
-          fontSize="14px"
+          fontSize="16px"
           sx={{
             a: {
               textDecor: "underline",
@@ -133,13 +133,14 @@ const Login = () => {
           regno: data.regno.trim(),
           passcode: data?.passcode?.trim(),
         });
+        console.log(resData.data);
         toast({
           status: "success",
           title: "Logged in successfully",
         });
         dispatch({
           type: "SET_IS_AUTH",
-          payload: { status: true, regno: resData.data.data.regno },
+          payload: true,
         });
         push("/");
       } else {
