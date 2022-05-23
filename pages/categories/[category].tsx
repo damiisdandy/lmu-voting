@@ -123,7 +123,8 @@ const Category = () => {
   const sortMeandAJ = (a: VoteNominee, b: VoteNominee) => {
     if (
       query.category?.includes("innovative") ||
-      query.category?.includes("face")
+      query.category?.includes("face") ||
+      query.category?.includes("entre")
     ) {
       return b.department.localeCompare(a.department);
     } else return 0;
