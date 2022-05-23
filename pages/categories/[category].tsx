@@ -125,7 +125,7 @@ const Category = () => {
       query.category?.includes("innovative") ||
       query.category?.includes("face")
     ) {
-      return a.department.localeCompare(b.department);
+      return b.department.localeCompare(a.department);
     } else return 0;
   };
 

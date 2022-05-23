@@ -61,6 +61,8 @@ const Index: NextPage = () => {
       <HStack
         display={{ base: "flex", md: "none" }}
         position="relative"
+        justify="center"
+        align="center"
         h="230px"
         w="100%"
         // mt="6"
@@ -78,7 +80,7 @@ const Index: NextPage = () => {
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          left="4%"
+          left="20px"
         >
           <Image
             src={top}
@@ -130,7 +132,7 @@ const Index: NextPage = () => {
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          right="4%"
+          right="20px"
         >
           <Image
             src={bottom}
