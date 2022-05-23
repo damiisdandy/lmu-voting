@@ -240,7 +240,7 @@ const Index: NextPage = () => {
               href="https://www.aolamide.com"
               isExternal
             >
-              olamide
+              ola.dev
             </ChakraLink>
           </MotionText>
           {state.endDate && (
