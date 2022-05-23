@@ -67,7 +67,6 @@ const Index: NextPage = () => {
       >
         <MotionBox
           animate={{
-            left: ["30%", "4%"],
             opacity: ["0%", "100%"],
             transition: {
               delay: 0.5,
@@ -120,7 +119,6 @@ const Index: NextPage = () => {
         </MotionBox>
         <MotionBox
           animate={{
-            right: ["30%", "4%"],
             opacity: ["0%", "100%"],
             transition: {
               delay: 0.5,
