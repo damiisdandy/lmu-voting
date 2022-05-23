@@ -83,7 +83,7 @@ const Index: NextPage = () => {
           left="20px"
         >
           <Image
-            src={top}
+            src={center}
             placeholder="blur"
             layout="fill"
             objectFit="cover"
@@ -112,7 +112,7 @@ const Index: NextPage = () => {
           }}
         >
           <Image
-            src={center}
+            src={top}
             placeholder="blur"
             layout="fill"
             objectFit="cover"
@@ -185,7 +185,7 @@ const Index: NextPage = () => {
           <MotionHStack
             variants={variantItem}
             justify={{ base: "center", md: "flex-start" }}
-            gap={{ base: "6", md: "8", lg: "12" }}
+            gap={{ base: "12", md: "8", lg: "12" }}
             alignItems="center"
             mt="8"
           >
