@@ -120,6 +120,15 @@ const Category = () => {
     }
   };
 
+  const sortMeandAJ = (a: VoteNominee, b: VoteNominee) => {
+    if (
+      query.category?.includes("innovative") ||
+      query.category?.includes("face")
+    ) {
+      return a.name.localeCompare(b.name);
+    } else return 0;
+  };
+
   return (
     <Page description="Categories">
       <Box p={{ base: "12", md: "6" }}>
@@ -220,7 +229,7 @@ const Category = () => {
                 xl: "repeat(3, 1fr)",
               }}
             >
-              {category?.nominees.map((nominee) => (
+              {category?.nominees.sort(sortMeandAJ).map((nominee) => (
                 <MotionGridItem
                   variants={variantItem}
                   shadow="md"
