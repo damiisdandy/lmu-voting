@@ -19,6 +19,7 @@ import Button from "../../components/Button";
 import Page from "../../components/Page";
 import config from "../../config";
 import { useGlobalContext } from "../../context";
+import { cloudinaryBuildUrl } from "../../utils";
 
 const MotionGrid = motion<MotionProps & GridProps>(Grid);
 const MotionGridItem = motion<MotionProps & GridItemProps>(GridItem);
@@ -171,7 +172,7 @@ const Categories = () => {
                             className="avatar"
                             borderColor="brand.100"
                             key={nominee.id}
-                            src={nominee.picture}
+                            src={cloudinaryBuildUrl("TINY", nominee.picture)}
                           />
                         ))}
                       </AvatarGroup>

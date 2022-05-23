@@ -21,6 +21,7 @@
     "@fontsource/koulen": "^4.5.8",
     "@fontsource/open-sans": "^4.5.10",
     "axios": "^0.27.2",
+    "cloudinary-build-url": "^0.2.4",
     "dayjs": "^1.11.2",
     "framer-motion": "^6.0.0",
     "graphql": "^16.5.0",

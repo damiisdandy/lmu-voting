@@ -22,6 +22,7 @@ import Page from "../../components/Page";
 import config from "../../config";
 import { useGlobalContext } from "../../context";
 import axios from "../../services";
+import { cloudinaryBuildUrl } from "../../utils";
 
 const MotionGrid = motion<MotionProps & GridProps>(Grid);
 const MotionGridItem = motion<MotionProps & GridItemProps>(GridItem);
@@ -186,13 +187,20 @@ const Category = () => {
                 }}
                 objectFit="cover"
                 objectPosition="0% 0%"
-                src={
-                  config.apiUrl +
-                  "/" +
-                  (category?.votedFor
+                src={cloudinaryBuildUrl(
+                  "MEDIUM",
+                  // @ts-ignore
+                  category?.votedFor
                     ? category?.votedFor.picture
-                    : votedFor?.picture)
-                }
+                    : votedFor?.picture
+                )}
+                fallbackSrc={cloudinaryBuildUrl(
+                  "PLACEHOLDER",
+                  // @ts-ignore
+                  category?.votedFor
+                    ? category?.votedFor.picture
+                    : votedFor?.picture
+                )}
                 alt={
                   category?.votedFor ? category.votedFor.name : votedFor?.name
                 }
@@ -271,8 +279,11 @@ const Category = () => {
                       }}
                       objectFit="cover"
                       objectPosition="0% 0%"
-                      src={nominee.picture}
-                      fallbackSrc={nominee.blurPicture}
+                      src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
+                      fallbackSrc={cloudinaryBuildUrl(
+                        "PLACEHOLDER",
+                        nominee.picture
+                      )}
                       alt={nominee.name}
                     />
                     <VStack p="3">

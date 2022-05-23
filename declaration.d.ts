@@ -6,6 +6,17 @@ interface GlobalState {
   endDate: string | null;
 }
 
+type ImageTypes =
+  | "TINY"
+  | "SMALL"
+  | "MEDIUM"
+  | "LARGE"
+  | "PLACEHOLDER"
+  | "HUGE"
+  | "OPTIMIZED_WIDTH"
+  | ""
+  | "BACKDROP";
+
 interface Action {
   type:
     | "TOGGLE_SIDEBAR"
