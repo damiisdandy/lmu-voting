@@ -12,12 +12,11 @@ import {
   useToast,
   VStack,
   chakra,
-  HStack,
+  Image,
 } from "@chakra-ui/react";
 import { motion, MotionProps } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "../../components/Button";
 import Page from "../../components/Page";
 import config from "../../config";
@@ -166,7 +165,7 @@ const Category = () => {
         ) : category?.isVoted || isVoted ? (
           <Center h="60vh">
             <VStack gap="6">
-              <Box
+              <Image
                 borderRadius="full"
                 overflow="hidden"
                 position="relative"
@@ -185,30 +184,19 @@ const Category = () => {
                     },
                   },
                 }}
-              >
-                <Image
-                  placeholder="blur"
-                  src={
-                    config.apiUrl +
-                    "/" +
-                    (category?.votedFor
-                      ? category?.votedFor.picture
-                      : votedFor?.picture)
-                  }
-                  blurDataURL={
-                    config.apiUrl +
-                    "/" +
-                    (category?.votedFor
-                      ? category?.votedFor.blurPicture
-                      : votedFor?.blurPicture)
-                  }
-                  alt={
-                    category?.votedFor ? category.votedFor.name : votedFor?.name
-                  }
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </Box>
+                objectFit="cover"
+                objectPosition="0% 0%"
+                src={
+                  config.apiUrl +
+                  "/" +
+                  (category?.votedFor
+                    ? category?.votedFor.picture
+                    : votedFor?.picture)
+                }
+                alt={
+                  category?.votedFor ? category.votedFor.name : votedFor?.name
+                }
+              />
               <Heading
                 fontSize={{
                   base: "20px",
@@ -262,7 +250,7 @@ const Category = () => {
                     bgColor="black"
                     p="2"
                   >
-                    <Box
+                    <Image
                       borderRadius="md"
                       overflow="hidden"
                       position="relative"
@@ -281,16 +269,12 @@ const Category = () => {
                           },
                         },
                       }}
-                    >
-                      <Image
-                        placeholder="blur"
-                        src={config.apiUrl + "/" + nominee.picture}
-                        blurDataURL={config.apiUrl + "/" + nominee.blurPicture}
-                        alt={nominee.name}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </Box>
+                      objectFit="cover"
+                      objectPosition="0% 0%"
+                      src={config.apiUrl + "/" + nominee.picture}
+                      fallbackSrc={config.apiUrl + "/" + nominee.blurPicture}
+                      alt={nominee.name}
+                    />
                     <VStack p="3">
                       <Heading
                         lineHeight="90%"
