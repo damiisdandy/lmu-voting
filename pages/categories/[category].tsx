@@ -191,7 +191,6 @@ const Category = () => {
                       ? category?.votedFor.picture
                       : votedFor?.picture)
                   }
-                  placeholder="blur"
                   blurDataURL={
                     config.apiUrl +
                     "/" +
@@ -281,7 +280,6 @@ const Category = () => {
                     >
                       <Image
                         src={config.apiUrl + "/" + nominee.picture}
-                        placeholder="blur"
                         blurDataURL={config.apiUrl + "/" + nominee.blurPicture}
                         alt={nominee.name}
                         layout="fill"

@@ -81,7 +81,7 @@ const Navbar = ({
           },
         }}
       >
-        <Image src={logo} placeholder="blur" objectFit="cover" alt="COE logo" />
+        <Image src={logo} objectFit="cover" alt="COE logo" />
       </Box>
       <HStack
         display={{ base: "none", md: "flex" }}

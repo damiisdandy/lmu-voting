@@ -82,13 +82,7 @@ const Index: NextPage = () => {
           shadow="lg"
           left="10px"
         >
-          <Image
-            src={center}
-            placeholder="blur"
-            layout="fill"
-            objectFit="cover"
-            alt="patient"
-          />
+          <Image src={center} layout="fill" objectFit="cover" alt="patient" />
         </MotionBox>
         <MotionBox
           animate={{
@@ -111,13 +105,7 @@ const Index: NextPage = () => {
             sm: "calc(50% - (var(--chakra-sizes-48)/2))",
           }}
         >
-          <Image
-            src={top}
-            placeholder="blur"
-            layout="fill"
-            objectFit="cover"
-            alt="patient"
-          />
+          <Image src={top} layout="fill" objectFit="cover" alt="patient" />
         </MotionBox>
         <MotionBox
           animate={{
@@ -134,13 +122,7 @@ const Index: NextPage = () => {
           shadow="lg"
           right="10px"
         >
-          <Image
-            src={bottom}
-            placeholder="blur"
-            layout="fill"
-            objectFit="cover"
-            alt="patient"
-          />
+          <Image src={bottom} layout="fill" objectFit="cover" alt="patient" />
         </MotionBox>
       </HStack>
       <Box
@@ -315,13 +297,7 @@ const Index: NextPage = () => {
             },
           }}
         >
-          <Image
-            src={top}
-            objectFit="cover"
-            placeholder="blur"
-            layout="fill"
-            alt="Samuel"
-          />
+          <Image src={top} objectFit="cover" layout="fill" alt="Samuel" />
         </MotionBox>
         <MotionBox
           animate={{
@@ -356,13 +332,7 @@ const Index: NextPage = () => {
             },
           }}
         >
-          <Image
-            src={center}
-            objectFit="cover"
-            placeholder="blur"
-            layout="fill"
-            alt="Patience"
-          />
+          <Image src={center} objectFit="cover" layout="fill" alt="Patience" />
         </MotionBox>
         <MotionBox
           animate={{
@@ -399,7 +369,6 @@ const Index: NextPage = () => {
           <Image
             src={bottom}
             objectFit="cover"
-            placeholder="blur"
             layout="fill"
             alt="Patience picture"
           />
