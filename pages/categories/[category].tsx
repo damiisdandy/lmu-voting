@@ -165,10 +165,9 @@ const Category = () => {
         ) : category?.isVoted || isVoted ? (
           <Center h="60vh">
             <VStack gap="6">
-              <Image
+              <Box
                 borderRadius="full"
                 overflow="hidden"
-                position="relative"
                 boxSize={{
                   base: "180px",
                   sm: "300px",
@@ -184,19 +183,23 @@ const Category = () => {
                     },
                   },
                 }}
-                objectFit="cover"
-                objectPosition="0% 0%"
-                src={
-                  config.apiUrl +
-                  "/" +
-                  (category?.votedFor
-                    ? category?.votedFor.picture
-                    : votedFor?.picture)
-                }
-                alt={
-                  category?.votedFor ? category.votedFor.name : votedFor?.name
-                }
-              />
+              >
+                <Image
+                  position="relative"
+                  objectFit="cover"
+                  objectPosition="0% 0%"
+                  src={
+                    config.apiUrl +
+                    "/" +
+                    (category?.votedFor
+                      ? category?.votedFor.picture
+                      : votedFor?.picture)
+                  }
+                  alt={
+                    category?.votedFor ? category.votedFor.name : votedFor?.name
+                  }
+                />
+              </Box>
               <Heading
                 fontSize={{
                   base: "20px",
@@ -250,12 +253,11 @@ const Category = () => {
                     bgColor="black"
                     p="2"
                   >
-                    <Image
-                      borderRadius="md"
+                    <Box
+                      borderRadius="full"
                       overflow="hidden"
-                      position="relative"
                       boxSize={{
-                        base: "250px",
+                        base: "180px",
                         sm: "300px",
                         lg: "400px",
                       }}
@@ -269,12 +271,16 @@ const Category = () => {
                           },
                         },
                       }}
-                      objectFit="cover"
-                      objectPosition="0% 0%"
-                      src={config.apiUrl + "/" + nominee.picture}
-                      fallbackSrc={config.apiUrl + "/" + nominee.blurPicture}
-                      alt={nominee.name}
-                    />
+                    >
+                      <Image
+                        position="relative"
+                        objectFit="cover"
+                        objectPosition="0% 0%"
+                        src={config.apiUrl + "/" + nominee.picture}
+                        fallbackSrc={config.apiUrl + "/" + nominee.blurPicture}
+                        alt={nominee.name}
+                      />
+                    </Box>
                     <VStack p="3">
                       <Heading
                         lineHeight="90%"
