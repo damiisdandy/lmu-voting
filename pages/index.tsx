@@ -74,13 +74,13 @@ const Index: NextPage = () => {
               delay: 0.5,
             },
           }}
-          position="absolute"
+          position="relative"
           boxSize={{ base: "24", sm: "32" }}
           zIndex="9"
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          left="20px"
+          left="-40px"
         >
           <Image
             src={center}
@@ -126,13 +126,13 @@ const Index: NextPage = () => {
               delay: 0.5,
             },
           }}
-          position="absolute"
+          position="relative"
           boxSize={{ base: "24", sm: "32" }}
           zIndex="9"
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          right="20px"
+          right="-40px"
         >
           <Image
             src={bottom}
