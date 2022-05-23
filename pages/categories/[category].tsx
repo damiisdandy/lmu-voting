@@ -187,6 +187,7 @@ const Category = () => {
                 }}
               >
                 <Image
+                  placeholder="blur"
                   src={
                     config.apiUrl +
                     "/" +
@@ -282,6 +283,7 @@ const Category = () => {
                       }}
                     >
                       <Image
+                        placeholder="blur"
                         src={config.apiUrl + "/" + nominee.picture}
                         blurDataURL={config.apiUrl + "/" + nominee.blurPicture}
                         alt={nominee.name}

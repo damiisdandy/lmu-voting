@@ -159,7 +159,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           >
             <VStack>
               <Box w={{ base: "44", md: "56" }} position="relative">
-                <Image src={logoOutline} alt="College of engineering" />
+                <Image
+                  src={logoOutline}
+                  placeholder="blur"
+                  alt="College of engineering"
+                />
               </Box>
               <Progress
                 bgColor="#b3535f"
@@ -177,7 +181,12 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           <MotionCenter exit={{ y: "-100%" }} h="100vh" w="100vw">
             <VStack>
               <Box w={{ base: "200px", md: "300px" }} position="relative">
-                <Image objectFit="cover" src={logoTimer} alt="coe" />
+                <Image
+                  placeholder="blur"
+                  objectFit="cover"
+                  src={logoTimer}
+                  alt="coe"
+                />
               </Box>
               <Countdown
                 renderer={({ days, hours, minutes, seconds }) => {
@@ -216,6 +225,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
               <Box h="8" w="28" position="absolute" top="4" left="4">
                 <Image
                   src={logo}
+                  placeholder="blur"
                   layout="fill"
                   objectFit="cover"
                   alt="College of Engineering"
