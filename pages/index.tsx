@@ -256,7 +256,7 @@ const Index: NextPage = () => {
                   return (
                     <Heading
                       textAlign={{ base: "center", md: "left" }}
-                      fontSize={{ base: "18px", md: "22px", xl: "30px" }}
+                      fontSize={{ base: "14px", md: "22px", xl: "30px" }}
                       color="brand.100"
                     >
                       {days} day{days != 1 ? "s" : ""}, {hours} hour

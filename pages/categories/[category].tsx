@@ -230,7 +230,7 @@ const Category = () => {
             <Heading
               mb={{ base: "5", md: "7", xl: "12" }}
               textAlign="center"
-              fontSize={{ base: "35px", xl: "60px" }}
+              fontSize={{ base: "26px", md: "35", xl: "60px" }}
             >
               {category?.name}
             </Heading>
