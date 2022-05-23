@@ -13,6 +13,7 @@ import {
   VStack,
   chakra,
   Image,
+  HStack,
 } from "@chakra-ui/react";
 import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/router";
@@ -102,6 +103,18 @@ const Category = () => {
     }
   }, [data?.sessionBySlug.categories, query.category]);
 
+  const prevCategory = useMemo(() => {
+    const categories = data?.sessionBySlug.categories || [];
+    const activeCategoryIndex = categories.findIndex(
+      (el) => el.slug === query.category
+    );
+    if (activeCategoryIndex === 0) {
+      return categories[categories.length - 1]?.slug;
+    } else {
+      return categories[activeCategoryIndex - 1]?.slug;
+    }
+  }, [data?.sessionBySlug.categories, query.category]);
+
   const vote = async (nominee: string) => {
     if (!state.isAuthenticated) {
       if (!toast.isActive("toast-id")) {
@@ -148,6 +161,11 @@ const Category = () => {
   const pushToNext = () => {
     setIsVoted(false);
     push(`/categories/${nextCategory}`);
+  };
+
+  const pushToPrev = () => {
+    setIsVoted(false);
+    push(`/categories/${prevCategory}`);
   };
 
   return (
@@ -319,6 +337,10 @@ const Category = () => {
             </MotionGrid>
           </>
         )}
+        <HStack justifyContent="space-between">
+          <Button onClick={pushToPrev}>Prev &larr;</Button>
+          <Button onClick={pushToNext}>Next &larr;</Button>
+        </HStack>
       </Box>
     </Page>
   );
