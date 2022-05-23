@@ -239,7 +239,6 @@ const Category = () => {
                   {category?.name}
                 </chakra.span>
               </Heading>
-              <Button onClick={pushToNext}>Next Category</Button>
             </VStack>
           </Center>
         ) : (
@@ -296,6 +295,7 @@ const Category = () => {
                       }}
                     >
                       <Image
+                        objectPosition="0% 0%"
                         objectFit="cover"
                         src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
                         fallbackSrc={cloudinaryBuildUrl(
@@ -335,12 +335,12 @@ const Category = () => {
                   </MotionGridItem>
                 ))}
             </MotionGrid>
+            <HStack justifyContent="space-between" mt="4">
+              <Button onClick={pushToPrev}>&larr; Prev</Button>
+              <Button onClick={pushToNext}>Next &rarr;</Button>
+            </HStack>
           </>
         )}
-        <HStack justifyContent="space-between" mt="4">
-          <Button onClick={pushToPrev}>&larr; Prev</Button>
-          <Button onClick={pushToNext}>Next &rarr;</Button>
-        </HStack>
       </Box>
     </Page>
   );

@@ -12,6 +12,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "BACKDROP":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               height: 500,
               type: "fill",
@@ -24,6 +25,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "TINY":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 200,
               height: 200,
@@ -36,6 +38,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "SMALL":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 150,
               height: 150,
@@ -48,6 +51,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "MEDIUM":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 500,
               height: 500,
@@ -60,6 +64,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "LARGE":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 700,
               height: 700,
@@ -72,6 +77,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "PLACEHOLDER":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 200,
               height: 200,
@@ -85,6 +91,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "HUGE":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               height: 2000,
               type: "fill",
@@ -96,6 +103,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
       case "OPTIMIZED_WIDTH":
         return buildUrl(publicId, {
           transformations: {
+            gravity: "face",
             resize: {
               width: 800,
               type: "fill",
