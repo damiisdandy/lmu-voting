@@ -258,10 +258,9 @@ const Category = () => {
                     bgColor="black"
                     p="2"
                   >
-                    <Image
+                    <Box
                       borderRadius="md"
                       overflow="hidden"
-                      position="relative"
                       boxSize={{
                         base: "250px",
                         sm: "300px",
@@ -277,15 +276,17 @@ const Category = () => {
                           },
                         },
                       }}
-                      objectFit="cover"
-                      objectPosition="0% 0%"
-                      src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
-                      fallbackSrc={cloudinaryBuildUrl(
-                        "PLACEHOLDER",
-                        nominee.picture
-                      )}
-                      alt={nominee.name}
-                    />
+                    >
+                      <Image
+                        objectFit="cover"
+                        src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
+                        fallbackSrc={cloudinaryBuildUrl(
+                          "PLACEHOLDER",
+                          nominee.picture
+                        )}
+                        alt={nominee.name}
+                      />
+                    </Box>
                     <VStack p="3">
                       <Heading
                         lineHeight="90%"
