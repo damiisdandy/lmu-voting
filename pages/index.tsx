@@ -299,12 +299,18 @@ const Index: NextPage = () => {
           left={{ md: "-20", xl: "-72" }}
           top={{ md: "40", xl: "24" }}
           sx={{
+            "& *": {
+              overflow: "hidden",
+            },
             img: {
               transition: "all 300ms ease",
             },
             "&:hover": {
               img: {
-                transform: "scale(1.2)",
+                transform: {
+                  base: "none",
+                  xl: "scale(1.2)",
+                },
               },
             },
           }}
@@ -334,12 +340,18 @@ const Index: NextPage = () => {
           left={{ md: "-28", lg: "-32" }}
           top="calc(50% - (var(--chakra-sizes-72)/2))"
           sx={{
+            "& *": {
+              overflow: "hidden",
+            },
             img: {
               transition: "all 300ms ease",
             },
             "&:hover": {
               img: {
-                transform: "scale(1.2)",
+                transform: {
+                  base: "none",
+                  xl: "scale(1.2)",
+                },
               },
             },
           }}
@@ -368,12 +380,18 @@ const Index: NextPage = () => {
           left={{ md: "-20", xl: "-72" }}
           bottom={{ md: "56", xl: "24" }}
           sx={{
+            "& *": {
+              overflow: "hidden",
+            },
             img: {
               transition: "all 300ms ease",
             },
             "&:hover": {
               img: {
-                transform: "scale(1.2)",
+                transform: {
+                  base: "none",
+                  xl: "scale(1.2)",
+                },
               },
             },
           }}
