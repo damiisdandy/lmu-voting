@@ -239,6 +239,10 @@ const Category = () => {
                   {category?.name}
                 </chakra.span>
               </Heading>
+              <HStack justifyContent="space-between" mt="4">
+                <Button onClick={pushToPrev}>&larr; Prev</Button>
+                <Button onClick={pushToNext}>Next &rarr;</Button>
+              </HStack>
             </VStack>
           </Center>
         ) : (
