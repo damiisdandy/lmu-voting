@@ -120,10 +120,14 @@ const Categories = () => {
             }}
             gap="7"
           >
-            {data?.sessionBySlug.categories
-              // @ts-ignore
-              .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-              .map((category) => (
+            {/* @ts-ignore */}
+            {[...data?.sessionBySlug.categories]
+              .sort(
+                (a: VoteCategory, b: VoteCategory) =>
+                  // @ts-ignore
+                  new Date(a.createdAt) - new Date(b.createdAt)
+              )
+              .map((category: VoteCategory) => (
                 <MotionGridItem
                   onClick={() => push(`/categories/${category.slug}`)}
                   variants={variantItem}

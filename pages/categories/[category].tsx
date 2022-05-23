@@ -82,13 +82,25 @@ const Category = () => {
   const [voteLoading, setVoteLoading] = useState(false);
   const { state } = useGlobalContext();
   const toast = useToast();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
   const category = useMemo<VoteCategory | null | undefined>(() => {
     return data
       ? data.sessionBySlug.categories.find((el) => el.slug === query.category)
       : null;
   }, [data, query.category]);
+
+  const nextCategory = useMemo(() => {
+    const categories = data?.sessionBySlug.categories || [];
+    const activeCategoryIndex = categories.findIndex(
+      (el) => el.slug === query.category
+    );
+    if (activeCategoryIndex === categories?.length - 1) {
+      return categories[0]?.slug;
+    } else {
+      return categories[activeCategoryIndex + 1]?.slug;
+    }
+  }, [data?.sessionBySlug.categories, query.category]);
 
   const vote = async (nominee: string) => {
     if (!state.isAuthenticated) {
@@ -130,9 +142,14 @@ const Category = () => {
     } else return 0;
   };
 
+  const pushToNext = () => {
+    setIsVoted(false);
+    push(`/categories/${nextCategory}`);
+  };
+
   return (
     <Page description="Categories">
-      <Box p={{ base: "12", md: "6" }}>
+      <Box key={nextCategory} p={{ base: "12", md: "6" }}>
         {loading ? (
           <Center h="60vh">
             <Spinner boxSize="28" color="brand.100" />
@@ -205,6 +222,7 @@ const Category = () => {
                   {category?.name}
                 </chakra.span>
               </Heading>
+              <Button onClick={pushToNext}>Next Category</Button>
             </VStack>
           </Center>
         ) : (
@@ -230,74 +248,75 @@ const Category = () => {
                 xl: "repeat(3, 1fr)",
               }}
             >
-              {category?.nominees.sort(sortMeandAJ).map((nominee) => (
-                <MotionGridItem
-                  variants={variantItem}
-                  shadow="md"
-                  overflow="hidden"
-                  borderRadius="lg"
-                  key={nominee.id}
-                  bgColor="black"
-                  p="2"
-                >
-                  <Box
-                    borderRadius="md"
+              {category &&
+                [...category?.nominees].sort(sortMeandAJ).map((nominee) => (
+                  <MotionGridItem
+                    variants={variantItem}
+                    shadow="md"
                     overflow="hidden"
-                    position="relative"
-                    boxSize={{
-                      base: "250px",
-                      sm: "300px",
-                      lg: "400px",
-                    }}
-                    sx={{
-                      img: {
-                        transition: "all 300ms ease",
-                      },
-                      "&:hover": {
-                        img: {
-                          transform: "scale(1.2)",
-                        },
-                      },
-                    }}
+                    borderRadius="lg"
+                    key={nominee.id}
+                    bgColor="black"
+                    p="2"
                   >
-                    <Image
-                      src={config.apiUrl + "/" + nominee.picture}
-                      placeholder="blur"
-                      blurDataURL={config.apiUrl + "/" + nominee.blurPicture}
-                      alt={nominee.name}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </Box>
-                  <VStack p="3">
-                    <Heading
-                      lineHeight="90%"
-                      mt="2"
-                      color="white"
-                      fontSize="24px"
-                      textAlign="center"
+                    <Box
+                      borderRadius="md"
+                      overflow="hidden"
+                      position="relative"
+                      boxSize={{
+                        base: "250px",
+                        sm: "300px",
+                        lg: "400px",
+                      }}
+                      sx={{
+                        img: {
+                          transition: "all 300ms ease",
+                        },
+                        "&:hover": {
+                          img: {
+                            transform: "scale(1.2)",
+                          },
+                        },
+                      }}
                     >
-                      {nominee.name}
-                    </Heading>
-                    <Text
-                      color="GrayText"
-                      textTransform="capitalize"
-                      fontSize="16px"
-                      textAlign="center"
-                    >
-                      {nominee.department}
-                    </Text>
-                    <Button
-                      isLoading={voteLoading}
-                      onClick={() => vote(nominee.id)}
-                      w="80%"
-                      isLight
-                    >
-                      Vote
-                    </Button>
-                  </VStack>
-                </MotionGridItem>
-              ))}
+                      <Image
+                        src={config.apiUrl + "/" + nominee.picture}
+                        placeholder="blur"
+                        blurDataURL={config.apiUrl + "/" + nominee.blurPicture}
+                        alt={nominee.name}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </Box>
+                    <VStack p="3">
+                      <Heading
+                        lineHeight="90%"
+                        mt="2"
+                        color="white"
+                        fontSize="24px"
+                        textAlign="center"
+                      >
+                        {nominee.name}
+                      </Heading>
+                      <Text
+                        color="GrayText"
+                        textTransform="capitalize"
+                        fontSize="16px"
+                        textAlign="center"
+                      >
+                        {nominee.department}
+                      </Text>
+                      <Button
+                        isLoading={voteLoading}
+                        onClick={() => vote(nominee.id)}
+                        w="80%"
+                        isLight
+                      >
+                        Vote
+                      </Button>
+                    </VStack>
+                  </MotionGridItem>
+                ))}
             </MotionGrid>
           </>
         )}
