@@ -299,7 +299,7 @@ const Category = () => {
                         {nominee.name}
                       </Heading>
                       <Text
-                        color="GrayText"
+                        color="#aaa"
                         textTransform="capitalize"
                         fontSize="16px"
                         textAlign="center"
