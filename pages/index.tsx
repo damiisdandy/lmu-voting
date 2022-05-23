@@ -61,12 +61,13 @@ const Index: NextPage = () => {
       <HStack
         display={{ base: "flex", md: "none" }}
         position="relative"
-        h="30vh"
-        mt="6"
+        h="230px"
+        w="100%"
+        // mt="6"
       >
         <MotionBox
           animate={{
-            x: ["100%", "0%"],
+            left: ["30%", "4%"],
             opacity: ["0%", "100%"],
             transition: {
               delay: 0.5,
@@ -119,7 +120,7 @@ const Index: NextPage = () => {
         </MotionBox>
         <MotionBox
           animate={{
-            x: ["-100%", "0%"],
+            right: ["30%", "4%"],
             opacity: ["0%", "100%"],
             transition: {
               delay: 0.5,
@@ -144,11 +145,16 @@ const Index: NextPage = () => {
       </HStack>
       <Box
         p={{ base: "2", md: "8", xl: "12" }}
-        h={{ base: "40vh", md: "80vh" }}
+        h={{ base: "auto", md: "80vh" }}
         alignItems="center"
         display="flex"
       >
-        <MotionBox variants={container} initial="hidden" animate="show">
+        <MotionBox
+          w="100%"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
           <MotionHeading
             variants={variantItem}
             textAlign={{ base: "center", md: "left" }}
