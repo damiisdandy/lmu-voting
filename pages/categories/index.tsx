@@ -171,7 +171,7 @@ const Categories = () => {
                             className="avatar"
                             borderColor="brand.100"
                             key={nominee.id}
-                            src={config.apiUrl + "/" + nominee.picture}
+                            src={nominee.picture}
                           />
                         ))}
                       </AvatarGroup>

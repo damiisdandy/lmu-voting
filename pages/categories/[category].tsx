@@ -271,8 +271,8 @@ const Category = () => {
                       }}
                       objectFit="cover"
                       objectPosition="0% 0%"
-                      src={config.apiUrl + "/" + nominee.picture}
-                      fallbackSrc={config.apiUrl + "/" + nominee.blurPicture}
+                      src={nominee.picture}
+                      fallbackSrc={nominee.blurPicture}
                       alt={nominee.name}
                     />
                     <VStack p="3">
