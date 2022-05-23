@@ -156,7 +156,7 @@ const Index: NextPage = () => {
               base: "32px",
               sm: "38px",
               md: "40px",
-              xl: "72px",
+              xl: "60px",
             }}
           >
             College of Engineering
@@ -322,10 +322,10 @@ const Index: NextPage = () => {
           border="8px solid white"
           borderColor="brand.100"
           position="absolute"
-          boxSize={{ md: "56", lg: "60" }}
+          boxSize={{ md: "56", lg: "64" }}
           borderRadius="full"
           overflow="hidden"
-          left={{ md: "-28", lg: "-36" }}
+          left={{ md: "-28", lg: "-32" }}
           top="calc(50% - (var(--chakra-sizes-72)/2))"
           sx={{
             img: {
