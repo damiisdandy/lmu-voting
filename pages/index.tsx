@@ -174,7 +174,7 @@ const Index: NextPage = () => {
             }}
           >
             Voting website for the college of engineering.
-            <br /> Login, select a categories and vote your person of choice.
+            <br /> Login, select a category and vote your person of choice.
           </MotionText>
           <MotionHStack
             variants={variantItem}
@@ -286,7 +286,7 @@ const Index: NextPage = () => {
             },
           }}
           position="absolute"
-          boxSize={{ md: "40", xl: "44" }}
+          boxSize={{ md: "40", xl: "36" }}
           borderRadius="full"
           overflow="hidden"
           boxShadow="lg"
@@ -322,7 +322,7 @@ const Index: NextPage = () => {
           border="8px solid white"
           borderColor="brand.100"
           position="absolute"
-          boxSize={{ md: "56", lg: "72" }}
+          boxSize={{ md: "56", lg: "60" }}
           borderRadius="full"
           overflow="hidden"
           left={{ md: "-28", lg: "-36" }}
@@ -355,7 +355,7 @@ const Index: NextPage = () => {
             },
           }}
           position="absolute"
-          boxSize={{ md: "40", xl: "44" }}
+          boxSize={{ md: "40", xl: "36" }}
           borderRadius="full"
           overflow="hidden"
           boxShadow="lg"
