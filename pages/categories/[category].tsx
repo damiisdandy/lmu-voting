@@ -337,9 +337,9 @@ const Category = () => {
             </MotionGrid>
           </>
         )}
-        <HStack justifyContent="space-between">
-          <Button onClick={pushToPrev}>Prev &larr;</Button>
-          <Button onClick={pushToNext}>Next &larr;</Button>
+        <HStack justifyContent="space-between" mt="4">
+          <Button onClick={pushToPrev}>&larr; Prev</Button>
+          <Button onClick={pushToNext}>Next &rarr;</Button>
         </HStack>
       </Box>
     </Page>
