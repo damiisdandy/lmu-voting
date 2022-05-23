@@ -61,9 +61,9 @@ const Index: NextPage = () => {
       <HStack
         display={{ base: "flex", md: "none" }}
         position="relative"
-        justify="center"
+        justify="space-between"
         align="center"
-        h="230px"
+        h="200px"
         w="100%"
         // mt="6"
       >
@@ -80,7 +80,7 @@ const Index: NextPage = () => {
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          left="-40px"
+          left="10px"
         >
           <Image
             src={center}
@@ -132,7 +132,7 @@ const Index: NextPage = () => {
           borderRadius="full"
           overflow="hidden"
           shadow="lg"
-          right="-40px"
+          right="10px"
         >
           <Image
             src={bottom}
@@ -159,7 +159,7 @@ const Index: NextPage = () => {
             variants={variantItem}
             textAlign={{ base: "center", md: "left" }}
             fontSize={{
-              base: "32px",
+              base: "27px",
               sm: "38px",
               md: "40px",
               xl: "60px",
