@@ -151,7 +151,7 @@ const Category = () => {
 
   return (
     <Page description="Categories">
-      <Box key={nextCategory} p={{ base: "12", md: "6" }}>
+      <Box w="100%" key={nextCategory} p={{ base: "5", md: "6" }}>
         {loading ? (
           <Center h="60vh">
             <Spinner boxSize="28" color="brand.100" />
