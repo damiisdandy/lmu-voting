@@ -104,11 +104,14 @@ const Category = () => {
 
   const vote = async (nominee: string) => {
     if (!state.isAuthenticated) {
-      toast({
-        status: "warning",
-        title: "You need to login to vote 😬",
-        description: "Go to the login page",
-      });
+      if (!toast.isActive("toast-id")) {
+        toast({
+          id: "toast-id",
+          status: "warning",
+          title: "You need to login to vote 😬",
+          description: "Go to the login page",
+        });
+      }
     } else {
       try {
         setVoteLoading(true);

@@ -213,20 +213,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
               top="0"
               zIndex="40"
             >
-              <Button
-                onClick={!state.isAuthenticated ? () => push("/login") : logout}
-                size="sm"
-                isLight
-                w="calc(100% - 20px)"
-                position="absolute"
-                bottom="10px"
-                isLoading={loading}
-                bgColor={state.isAuthenticated ? "brand.300" : ""}
-                // @ts-ignore
-                color={state.isAuthenticated ? "white" : null}
-              >
-                {state.isAuthenticated ? "Logout" : "Login"}
-              </Button>
               <Box h="8" w="28" position="absolute" top="4" left="4">
                 <Image
                   src={logo}
@@ -264,6 +250,20 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                     <Link href={el.url}>{el.name}</Link>
                   </Text>
                 ))}
+                <Button
+                  onClick={
+                    !state.isAuthenticated ? () => push("/login") : logout
+                  }
+                  size="sm"
+                  isLight
+                  w="100%"
+                  isLoading={loading}
+                  bgColor={state.isAuthenticated ? "brand.300" : ""}
+                  // @ts-ignore
+                  color={state.isAuthenticated ? "white" : null}
+                >
+                  {state.isAuthenticated ? "Logout" : "Login"}
+                </Button>
               </VStack>
             </Center>
             <Box key={state.loader + "loader"}>{children}</Box>
