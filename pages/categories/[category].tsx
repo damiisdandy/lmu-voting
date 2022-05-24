@@ -12,7 +12,6 @@ import {
   useToast,
   VStack,
   chakra,
-  Image,
   HStack,
 } from "@chakra-ui/react";
 import { motion, MotionProps } from "framer-motion";
@@ -24,6 +23,7 @@ import config from "../../config";
 import { useGlobalContext } from "../../context";
 import axios from "../../services";
 import { cloudinaryBuildUrl } from "../../utils";
+import Image from "next/image";
 
 const MotionGrid = motion<MotionProps & GridProps>(Grid);
 const MotionGridItem = motion<MotionProps & GridItemProps>(GridItem);
@@ -184,7 +184,7 @@ const Category = () => {
         ) : category?.isVoted || isVoted ? (
           <Center h="60vh">
             <VStack gap="6">
-              <Image
+              <Box
                 borderRadius="full"
                 overflow="hidden"
                 position="relative"
@@ -203,26 +203,29 @@ const Category = () => {
                     },
                   },
                 }}
-                objectFit="cover"
-                objectPosition="0% 0%"
-                src={cloudinaryBuildUrl(
-                  "MEDIUM",
-                  // @ts-ignore
-                  category?.votedFor
-                    ? category?.votedFor.picture
-                    : votedFor?.picture
-                )}
-                fallbackSrc={cloudinaryBuildUrl(
-                  "PLACEHOLDER",
-                  // @ts-ignore
-                  category?.votedFor
-                    ? category?.votedFor.picture
-                    : votedFor?.picture
-                )}
-                alt={
-                  category?.votedFor ? category.votedFor.name : votedFor?.name
-                }
-              />
+              >
+                <Image
+                  src={cloudinaryBuildUrl(
+                    "MEDIUM",
+                    // @ts-ignore
+                    category?.votedFor
+                      ? category?.votedFor.picture
+                      : votedFor?.picture
+                  )}
+                  blurDataURL={cloudinaryBuildUrl(
+                    "PLACEHOLDER",
+                    // @ts-ignore
+                    category?.votedFor
+                      ? category?.votedFor.blurPicture
+                      : votedFor?.blurPicture
+                  )}
+                  alt={
+                    category?.votedFor ? category.votedFor.name : votedFor?.name
+                  }
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
               <Heading
                 fontSize={{
                   base: "20px",
@@ -298,16 +301,37 @@ const Category = () => {
                         },
                       }}
                     >
-                      <Image
-                        objectPosition="0% 0%"
-                        objectFit="cover"
-                        src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
-                        fallbackSrc={cloudinaryBuildUrl(
-                          "PLACEHOLDER",
-                          nominee.picture
-                        )}
-                        alt={nominee.name}
-                      />
+                      <Box
+                        borderRadius="md"
+                        overflow="hidden"
+                        position="relative"
+                        boxSize={{
+                          base: "250px",
+                          sm: "300px",
+                          lg: "400px",
+                        }}
+                        sx={{
+                          img: {
+                            transition: "all 300ms ease",
+                          },
+                          "&:hover": {
+                            img: {
+                              transform: "scale(1.2)",
+                            },
+                          },
+                        }}
+                      >
+                        <Image
+                          src={cloudinaryBuildUrl("MEDIUM", nominee.picture)}
+                          blurDataURL={cloudinaryBuildUrl(
+                            "PLACEHOLDER",
+                            nominee.blurPicture
+                          )}
+                          alt={nominee.name}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </Box>
                     </Box>
                     <VStack p="3">
                       <Heading

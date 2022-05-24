@@ -53,12 +53,12 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
           transformations: {
             gravity: "face",
             resize: {
-              width: 500,
-              height: 500,
+              width: 400,
+              height: 400,
               type: "fill",
             },
-            format: "webp",
-            quality: 80,
+            format: "png",
+            quality: 75,
           },
         });
       case "LARGE":
@@ -83,7 +83,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               height: 200,
               type: "fill",
             },
-            format: "webp",
+            format: "png",
             effect: "blur:1000",
             quality: 1,
           },
