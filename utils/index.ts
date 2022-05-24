@@ -18,7 +18,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               type: "fill",
             },
             effect: "blur:500",
-            format: "webp",
+            format: "png",
             quality: 30,
           },
         });
@@ -31,7 +31,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               height: 200,
               type: "thumb",
             },
-            format: "webp",
+            format: "png",
             quality: 50,
           },
         });
@@ -44,7 +44,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               height: 150,
               type: "fill",
             },
-            format: "webp",
+            format: "png",
             quality: 60,
           },
         });
@@ -70,7 +70,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               height: 700,
               type: "fill",
             },
-            format: "webp",
+            format: "png",
             quality: 80,
           },
         });
@@ -96,7 +96,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               height: 2000,
               type: "fill",
             },
-            format: "webp",
+            format: "png",
             quality: 100,
           },
         });
@@ -108,7 +108,7 @@ export const cloudinaryBuildUrl = (type: ImageTypes, url: string) => {
               width: 800,
               type: "fill",
             },
-            format: "webp",
+            format: "png",
             quality: 80,
           },
         });
