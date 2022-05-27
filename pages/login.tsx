@@ -19,6 +19,7 @@ import { useGlobalContext } from "../context";
 import axios from "../services";
 import Link from "next/link";
 import { useCountdown } from "usehooks-ts";
+import dayjs from "dayjs";
 
 const MotionBox = motion<MotionProps & BoxProps>(Box);
 
@@ -136,6 +137,13 @@ const Login = () => {
   const { dispatch, state } = useGlobalContext();
 
   const login = async (data: { regno: string; passcode?: string }) => {
+    if (dayjs().isAfter(state.endDate)) {
+      toast({
+        status: "warning",
+        title: "Voting has expired 💀",
+      });
+      return;
+    }
     try {
       setLoading(true);
       if (hasPasscode) {

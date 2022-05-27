@@ -24,6 +24,7 @@ import { useGlobalContext } from "../../context";
 import axios from "../../services";
 import { cloudinaryBuildUrl } from "../../utils";
 import Image from "next/image";
+import dayjs from "dayjs";
 
 const MotionGrid = motion<MotionProps & GridProps>(Grid);
 const MotionGridItem = motion<MotionProps & GridItemProps>(GridItem);
@@ -116,6 +117,13 @@ const Category = () => {
   }, [data?.sessionBySlug.categories, query.category]);
 
   const vote = async (nominee: string) => {
+    if (dayjs().isAfter(state.endDate)) {
+      toast({
+        status: "warning",
+        title: "Voting has expired 💀",
+      });
+      return;
+    }
     if (!state.isAuthenticated) {
       if (!toast.isActive("toast-id")) {
         toast({

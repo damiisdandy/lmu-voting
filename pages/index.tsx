@@ -259,10 +259,16 @@ const Index: NextPage = () => {
                       fontSize={{ base: "14px", md: "22px", xl: "30px" }}
                       color="brand.100"
                     >
-                      {days} day{days != 1 ? "s" : ""}, {hours} hour
-                      {hours != 1 ? "s" : ""}, {minutes} minute
-                      {minutes != 1 ? "s" : ""}, {seconds} second
-                      {seconds != 1 ? "s" : ""} left
+                      {dayjs().isAfter(state.endDate) ? (
+                        "VOTING CLOSED!"
+                      ) : (
+                        <>
+                          {days} day{days != 1 ? "s" : ""}, {hours} hour
+                          {hours != 1 ? "s" : ""}, {minutes} minute
+                          {minutes != 1 ? "s" : ""}, {seconds} second
+                          {seconds != 1 ? "s" : ""} left
+                        </>
+                      )}
                     </Heading>
                   );
                 }}
